@@ -1,0 +1,26 @@
+node {
+    stage ('downloading code'){
+        echo "downloading code"
+        git credentialsId: 'bf1ee37b-1d63-46ea-a397-5276eea46ad9', url: 'https://github.com/vasimdevops/studentwebapp.git'
+    }
+
+    stage ('cleaning the code'){
+        echo "cleaning code"
+        sh 'mvn clean'
+    }
+    
+    stage ('compile the code'){
+        echo "compiling code"
+        sh 'mvn compile'
+    }
+    
+    stage ('code coverage'){
+        echo "code coverage"
+        sh 'mvn sonar:sonar -Dsonar.host.url=http://35.231.183.218:9000 -Dsonar.login=168da8bc6951c907add139dfd172297d5d37bfa9'
+    }
+    
+    stage ('deploying the code'){
+        echo "code deploy"
+        sh 'mvn deploy'
+    }
+}
