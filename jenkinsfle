@@ -16,7 +16,7 @@ node {
     
     stage ('code coverage'){
         echo "code coverage"
-        sh 'mvn sonar:sonar -Dsonar.host.url=http://35.231.183.218:9000 -Dsonar.login=168da8bc6951c907add139dfd172297d5d37bfa9'
+        sh 'mvn sonar:sonar -Dsonar.host.url=http://10.142.0.51:9000 -Dsonar.login=168da8bc6951c907add139dfd172297d5d37bfa9'
     }
     
     stage ('deploying the code'){
